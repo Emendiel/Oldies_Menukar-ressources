@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.1.5
+-- version 3.3.7deb2build0.10.10.1
 -- http://www.phpmyadmin.net
 --
--- Serveur: emendiel.sql.free.fr
--- Généré le : Jeu 02 Décembre 2010 à 00:35
--- Version du serveur: 5.0.83
--- Version de PHP: 5.2.9
+-- Serveur: localhost
+-- Généré le : Ven 10 Décembre 2010 à 18:19
+-- Version du serveur: 5.1.49
+-- Version de PHP: 5.3.3-1ubuntu9.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `emendiel`
+-- Base de données: `Menukar-test`
 --
 
 -- --------------------------------------------------------
@@ -26,12 +26,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `admin42` (
-  `ID_admin` int(4) NOT NULL auto_increment,
-  `Login_admin` varchar(100) collate latin1_general_ci NOT NULL,
-  `MDP_admin` varchar(100) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`ID_admin`),
+  `ID_admin` int(4) NOT NULL AUTO_INCREMENT,
+  `Login_admin` varchar(100) NOT NULL,
+  `MDP_admin` varchar(100) NOT NULL,
+  PRIMARY KEY (`ID_admin`),
   KEY `ID_admin` (`ID_admin`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `admin42`
@@ -48,14 +48,14 @@ INSERT INTO `admin42` (`ID_admin`, `Login_admin`, `MDP_admin`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `commentaires` (
-  `ID_C` int(4) NOT NULL auto_increment,
+  `ID_C` int(4) NOT NULL AUTO_INCREMENT,
   `ID_N` int(4) NOT NULL,
-  `Auteur_C` varchar(50) collate latin1_general_ci NOT NULL,
-  `Text_C` varchar(1000) collate latin1_general_ci NOT NULL,
-  `Date_C` varchar(10) collate latin1_general_ci NOT NULL,
-  `Heure_C` varchar(5) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`ID_C`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=15 ;
+  `Auteur_C` varchar(50) NOT NULL,
+  `Text_C` varchar(1000) NOT NULL,
+  `Date_C` varchar(10) NOT NULL,
+  `Heure_C` varchar(5) NOT NULL,
+  PRIMARY KEY (`ID_C`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `commentaires`
@@ -74,12 +74,12 @@ INSERT INTO `commentaires` (`ID_C`, `ID_N`, `Auteur_C`, `Text_C`, `Date_C`, `Heu
 --
 
 CREATE TABLE IF NOT EXISTS `emote` (
-  `ID_e` int(4) NOT NULL auto_increment,
+  `ID_e` int(4) NOT NULL AUTO_INCREMENT,
   `nom_ge` int(4) NOT NULL,
-  `code_e` varchar(50) collate latin1_general_ci NOT NULL,
-  `image_e` varchar(200) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`ID_e`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=19 ;
+  `code_e` varchar(50) NOT NULL,
+  `image_e` varchar(200) NOT NULL,
+  PRIMARY KEY (`ID_e`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Contenu de la table `emote`
@@ -108,9 +108,9 @@ INSERT INTO `emote` (`ID_e`, `nom_ge`, `code_e`, `image_e`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `emote_groupe` (
-  `ID_ge` int(4) NOT NULL auto_increment,
-  `nom_ge` varchar(50) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`ID_ge`)
+  `ID_ge` int(4) NOT NULL AUTO_INCREMENT,
+  `nom_ge` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`ID_ge`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=8 ;
 
 --
@@ -133,11 +133,11 @@ INSERT INTO `emote_groupe` (`ID_ge`, `nom_ge`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `menu_cat` (
-  `ID_Cat` int(4) NOT NULL auto_increment,
+  `ID_Cat` int(4) NOT NULL AUTO_INCREMENT,
   `Nom_Cat` varchar(50) NOT NULL,
   `Ordre_Cat` int(4) NOT NULL,
-  PRIMARY KEY  (`ID_Cat`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  PRIMARY KEY (`ID_Cat`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `menu_cat`
@@ -155,7 +155,7 @@ INSERT INTO `menu_cat` (`ID_Cat`, `Nom_Cat`, `Ordre_Cat`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
-  `ID_N` int(4) NOT NULL auto_increment,
+  `ID_N` int(4) NOT NULL AUTO_INCREMENT,
   `Cat_N` int(4) NOT NULL,
   `Nom_N` varchar(100) NOT NULL,
   `Text_N` text NOT NULL,
@@ -163,8 +163,8 @@ CREATE TABLE IF NOT EXISTS `news` (
   `Date_N` varchar(10) NOT NULL,
   `Tag_N` text NOT NULL,
   `Ligne_N` tinyint(1) NOT NULL,
-  PRIMARY KEY  (`ID_N`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
+  PRIMARY KEY (`ID_N`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=81 ;
 
 --
 -- Contenu de la table `news`
@@ -205,7 +205,7 @@ INSERT INTO `news` (`ID_N`, `Cat_N`, `Nom_N`, `Text_N`, `Auteur_N`, `Date_N`, `T
 (76, 16, 'Mais c&#39;est HONTEUX', '[b]/!\\ Attention : article avec des bouts de science dedans /!\\[/b]\r\n\r\nAujourd&#39;hui, j&#39;ai eu cours de physique (a 10h/semaine, c&#39;est assez souvent) sur le modèle ondulatoire de la [url=http://fr.wikipedia.org/wiki/Lumi%C3%A8re]lumière[/url] (un truc très sympa) et aujourd&#39;hui, j&#39;ai appris un truc atroce : Un atome qui se désexcite n&#39;émet pas toujours de la lumière avec une même fréquence : explication par une petite histoire.\r\n\r\n\r\n\r\nAujourd&#39;hui, je suis [i]forest le photon[/i].\r\nJe suis un photon dans la pleine force de l&#39;age, emis il y a quelques nanosecondes, qui navigue exactement a 299 792 458 m/s (vitesse de croisière, t&#39;inquiètes je gère). Je suis né d&#39;un papa atome qui s&#39;est déchargé de son excitation en faisant un gosse (bah voyons) : MOI (et plein d&#39;autre).\r\n\r\nJ&#39;ai choisi par conviction personnelle de croire a la nature ondulatoire de la lumière. J&#39;ondule donc a une fréquence f sur ma belle vague avec tout mes jumeaux photon émit en même temps que moi (on est nombreux, papa atome a fait une grosse portée). Nous avons tous la même énergie (sauf ceux qui ont rencontré un obstacle entre temps et qui sont un peu raplapla) et avons tous la même fréquence. \r\nJe suis bien dans le cadre de la théorie ondulatoire de la lumière. \r\nTout va BIEN.\r\n\r\nEt la, par un hasard de la vie photonique, qui rencontre je ? Un petit frérot !\r\nJe le reconnais, il est issu du même papa atome que moi, mais beaucoup plus tard, environ une microsecondes après moi. Chic ! Chic ! Je vais pouvoir faire des [url=http://fr.wikipedia.org/wiki/Interf%C3%A9rence]Interférences[/url] avec lui. Nous frappons tout deux joyeusement l&#39;écran disposé a cette fin pour nous rendre visible de l&#39;observateur Toto qui regarde avidement son montage optique préparé avec soin et amour.\r\n\r\nEt la, .... Rien. Rien de rien. Rien de rien de rien de ... ramgamaziel !\r\nAucune interférence. Nous somme du même papa atome mais nous ne somme pas de la même fréquence car nous avons été émis trop longtemps l&#39;un après l&#39;autre.\r\nc&#39;est horrible.\r\nJe suis déprimé.\r\nJe vous déteste tous.\r\nJe renie la nature ondulatoire de la lumière.\r\n*forest va se perdre du coté de la quantique, paix a son ame de photon*\r\n\r\n\r\n\r\nOuai bon. C&#39;était du bon trip physicien, je m&#39;excuse platement. A ceux qui n&#39;en on pas eu assez. Il y a encore [url=http://maliki.com/strip.php?strip=191]Maliki[/url], Wikipedia et une licence de physique (voir plus si affinité).\r\nPromis, la prochaine fois ca serra des math.', 'Gab', '12/11/2009', 'NULL | Science | Physique | Lumiere | N&#39;imp', 0),
 (77, 5, 'Coup de gueule', 'Les derniers vestiges de notre histoire meurent les uns après les autres.\r\n\r\nNous les honorons en oubliant ce pourquoi ils se sont battus. [b]La liberté de tous et le droit de vivre de manière honorable[/b].\r\n\r\nOn commémore le mur de Berlin alors que plein de murs invisibles sont levés que ce soit en France avec la politique de l&#39;immigration et les lois sur l&#39;ADN ou les frontières entre le Tiers monde et l&#39;Occident !\r\n\r\nComment, si peu d&#39;années après, pouvons nous être à ce point hypocrites et aveugles ? Nos libertés les plus absolues s&#39;estompent sous un tonnerre d&#39;applaudissement.\r\n\r\nPlus nous avançons et plus nous régressons, à quel moment allons nous réagir et arrêter ce massacre ? \r\n\r\nN&#39;oublions pas le passé ou il nous rattrapera...', 'Emendiel', '17/11/2009', 'NULL | Mémoire | Passé | Présent | Futur', 0),
 (78, 8, 'Renaissance !!!', 'Bonjour tout le monde,\r\n\r\nTout d&#39;abord désolé pour cette longue absence, elle est entièrement de ma faute car je ne prenais plus le temps de passer ici pour poster des articles. Je comptes bien remédier a cela pour la suite des évènements. Le silence est une forme d&#39;acceptation que je refuse de pratiquer dorénavant !\r\n\r\nDonc voila un petit article pour me re-motiver à poster des articles !\r\n\r\nAmicalement', 'Emendiel', '03/06/2010', 'NULL | Renaissance | Retour | Emendiel | 42', 0),
-(79, 3, 'iPad or Paid', '[b]Meeeeeee ou comment je suis devenu mouton[/b]\r\n\r\nCela fait plusieurs moi que tout le monde ne parle plus que ça : [i]"iPad, iPad, [b]FAUT[/b] que je m&#39;achète l&#39;iPad"[/i], mais qu&#39;apporte vraiment ce fameux Paid...pardon iPad (On a le droit de dire sont nom sans payer des droits ? étonnant !) et qu&#39;apporte Apple et les "i" en général ?\r\n\r\n[b]iPad même un con l&#39;utilise, Je suis con, Donc j&#39;ai un iPad[/b]\r\n\r\nD&#39;un point de vu purement "utilisateur, consommateur" hum je dirais une espèce d&#39;assistanat et de complaisance de la médiocrité ! Comme le dis si bien Apple "Si vous ne pouvez pas l’ouvrir, alors ce n’est pas à vous" en gros il faut vraiment etre très con pour pas comprendre comment fonctionne leur couteau suisse a application de m**de inutile ! L&#39;iPad est à l&#39;épanouissement intellectuel et la curiosité ce que la menotte et le bâillon sont à la liberté ! Il est fermé de toute part tu ne l&#39;étudie pas tu pose ton pouce et tu achète de la musique certifié Apple avec ton logiciel certifié Apple acheté sur la Apple-store certifié Apple.\r\n\r\n[b]iPad la pointe de la technologie et du développement, merci Apple[/b]\r\n\r\nC&#39;est fous comme les gens (l&#39;utilisateur lambda) et même les développeurs (encore plus flippant) beugle une ode à la gloire de l&#39;iPad et d&#39;Apple pour leur technologie et leur possibilité. Il n&#39;y à rien de plus rétrogradant pour l&#39;avenir de la technologie et la liberté de développement que les produits d&#39;Apple certifié fermé, non accessible et non partageable (Oui nous l&#39;avons compris a force "partage et entre-aide" c&#39;est mal !). Apple bombarde l&#39;ensemble de ces produits de DRM pour tout et rien, la moindre vis, le moindre rabotage de leur appareils est protégé, fermé et soudé !\r\n\r\nIl faut prendre conscience que les DRM sont nuisibles a l&#39;avenir et aux liberté de l&#39;Homme ! Elles nous enferment, nous empêchent de comprendre le monde qui nous entours, d&#39;être curieux, tout ce qui fait de nous des hommes et nous distingue du mouton calme et qui suis gentiment ce qu&#39;on lui dis afin de profiter au mieux de lui.\r\n\r\n[b]Meeeee y&#39;a pas de "mais" qui tienne soyez Humain ![/b]\r\n\r\nVoila je vais m&#39;arrêter la sous peine de ne plus être pertinent dans mes propos et de partir dans de la bête opposition. Je conclurais juste avec cette phrase : Libre à vous d&#39;être des moutons, mais l&#39;homme vaut mieux que cela, vous avez un cerveau servez-vous en !\r\n\r\nArticle à lire sur le même sujet et beaucoup plus complet : [url=http://www.framablog.org/index.php/post/2010/05/29/ipad-pourquoi-je-ne-l-acheterai-pas]Pourquoi je n&#39;achèterai pas un iPad[/url] Merci FramaBlog', 'Emendiel', '03/06/2010', 'NULL | iPad | Apple | DRM | Mouton | Paid | FramaBlog', 0);
+(79, 3, 'iPad or Paid', '[b]Méeeeeee ou comment je suis devenu mouton[/b]\r\n\r\nCela fait plusieurs moi que tout le monde ne parle plus que ça : [i]"iPad, iPad, [b]FAUT[/b] que je m&#39;achète l&#39;iPad"[/i], mais qu&#39;apporte vraiment ce fameux Paid...pardon iPad (On a le droit de dire sont nom sans payer des droits ? étonnant !) et qu&#39;apporte Apple et les "i" en général ?\r\n\r\n[b]iPad même un con l&#39;utilise, Je suis con, Donc j&#39;ai un iPad[/b]\r\n\r\nD&#39;un point de vu purement "utilisateur, consommateur" hum je dirais une espèce d&#39;assistanat et de complaisance de la médiocrité ! Comme le dis si bien Apple "Si vous ne pouvez pas l’ouvrir, alors ce n’est pas à vous" en gros il faut vraiment etre très con pour pas comprendre comment fonctionne leur couteau suisse a application de m**de inutile ! L&#39;iPad est à l&#39;épanouissement intellectuel et la curiosité ce que la menotte et le bâillon sont à la liberté ! Il est fermé de toute part tu ne l&#39;étudie pas tu pose ton pouce et tu achète de la musique certifié Apple avec ton logiciel certifié Apple acheté sur la Apple-store certifié Apple.\r\n\r\n[b]iPad la pointe de la technologie et du développement, merci Apple[/b]\r\n\r\nC&#39;est fous comme les gens (l&#39;utilisateur lambda) et même les développeurs (encore plus flippant) beugle une ode à la gloire de l&#39;iPad et d&#39;Apple pour leur technologie et leur possibilité. Il n&#39;y à rien de plus rétrogradant pour l&#39;avenir de la technologie et la liberté de développement que les produits d&#39;Apple certifié fermé, non accessible et non partageable (Oui nous l&#39;avons compris a force "partage et entre-aide" c&#39;est mal !). Apple bombarde l&#39;ensemble de ces produits de DRM pour tout et rien, la moindre vis, le moindre rabotage de leur appareils est protégé, fermé et soudé !\r\n\r\nIl faut prendre conscience que les DRM sont nuisibles a l&#39;avenir et aux liberté de l&#39;Homme ! Elles nous enferment, nous empêchent de comprendre le monde qui nous entours, d&#39;être curieux, tout ce qui fait de nous des hommes et nous distingue du mouton calme et qui suis gentiment ce qu&#39;on lui dis afin de profiter au mieux de lui.\r\n\r\n[b]Meeeee y&#39;a pas de "mais" qui tienne soyez Humain ![/b]\r\n\r\nVoila je vais m&#39;arrêter la sous peine de ne plus être pertinent dans mes propos et de partir dans de la bête opposition. Je conclurais juste avec cette phrase : Libre à vous d&#39;être des moutons, mais l&#39;homme vaut mieux que cela, vous avez un cerveau servez-vous en !\r\n\r\nArticle à lire sur le même sujet et beaucoup plus complet : [url=http://www.framablog.org/index.php/post/2010/05/29/ipad-pourquoi-je-ne-l-acheterai-pas]Pourquoi je n&#39;achèterai pas un iPad[/url] Merci FramaBlog', 'Emendiel', '03/06/2010', 'NULL | iPad | Apple | DRM | Mouton | Paid | FramaBlog', 0);
 
 -- --------------------------------------------------------
 
@@ -214,13 +214,13 @@ INSERT INTO `news` (`ID_N`, `Cat_N`, `Nom_N`, `Text_N`, `Auteur_N`, `Date_N`, `T
 --
 
 CREATE TABLE IF NOT EXISTS `rss` (
-  `id` int(4) NOT NULL auto_increment,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL,
   `guid` varchar(100) NOT NULL,
   `description` varchar(500) NOT NULL,
   `pubDate` varchar(10) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
@@ -265,19 +265,19 @@ INSERT INTO `rss` (`id`, `title`, `link`, `guid`, `description`, `pubDate`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `sm` (
-  `ID_SM` int(4) NOT NULL auto_increment,
+  `ID_SM` int(4) NOT NULL AUTO_INCREMENT,
   `Nom_SM` varchar(500) NOT NULL,
   `Cat_SM` int(4) NOT NULL,
   `Ordre_SM` int(4) NOT NULL,
-  PRIMARY KEY  (`ID_SM`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  PRIMARY KEY (`ID_SM`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `sm`
 --
 
 INSERT INTO `sm` (`ID_SM`, `Nom_SM`, `Cat_SM`, `Ordre_SM`) VALUES
-(1, 'Jeux Vidéo', 1, 10),
+(1, 'Jeux Video', 1, 10),
 (2, 'Programmation', 1, 20),
 (3, 'High-tech', 1, 30),
 (4, 'Livre', 2, 10),
@@ -292,7 +292,3 @@ INSERT INTO `sm` (`ID_SM`, `Nom_SM`, `Cat_SM`, `Ordre_SM`) VALUES
 (13, 'Convention', 3, 15),
 (15, 'OS', 1, 40),
 (16, 'Science', 3, 0);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
